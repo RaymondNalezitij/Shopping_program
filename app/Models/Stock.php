@@ -14,6 +14,7 @@ class Stock implements StockInterface
     public function addProduct(ProductInterface $product): StockInterface
     {
         $this->stock[] = $product;
+
         return $this;
     }
 
