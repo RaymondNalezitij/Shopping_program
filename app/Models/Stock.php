@@ -4,18 +4,32 @@ namespace App\Models;
 
 class Stock implements StockInterface
 {
+    private array $stock;
+
+    public function __construct()
+    {
+        $this->stock = [];
+    }
+
     public function addProduct(ProductInterface $product): StockInterface
     {
-        // TODO: Implement addProduct() method.
+        $this->stock[] = $product;
+        return $this;
     }
 
     public function removeProduct(ProductInterface $product): StockInterface
     {
-        // TODO: Implement removeProduct() method.
+        foreach ($this->stock as $i => $value) {
+            if ($value == $product) {
+                array_splice($this->stock, $i, 1);
+            }
+        }
+
+        return $this;
     }
 
     public function getProducts(): array
     {
-        // TODO: Implement getProducts() method.
+        return $this->stock;
     }
 }

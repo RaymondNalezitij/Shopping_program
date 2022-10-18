@@ -9,9 +9,17 @@ class Money implements MoneyInterface
 
     public function __construct(float $price)
     {
-        list($int,$dec)=explode('.', $price);
-        $this->euros = $int;
-        $this->cents = $dec;
+        if(str_contains($price,'.')){
+            list($int, $dec) = explode('.', $price);
+            $this->euros = $int;
+            if ($dec < 10) {
+                $dec = $dec * 10;
+            }
+            $this->cents = $dec;
+        } else {
+            $this->euros = $price;
+            $this->cents = 0;
+        }
     }
 
     public function setCents(int $cents): MoneyInterface

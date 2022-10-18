@@ -1,8 +1,8 @@
 <?php
 
-use \App\Models\Product;
-use \App\Models\Money;
-use \App\Models\Stock;
+use App\Models\Money;
+use App\Models\Product;
+use App\Models\Stock;
 
 function addItemToStock($product): Stock
 {
@@ -17,18 +17,27 @@ test('Stock object should be created', function () {
     expect($stock->getProducts())->toBe([]);
 });
 
-test('Product object should be put into the stock object', function () {
+test('A product should be put into the stock', function () {
     $product = new Product('iPhone', 1, new Money(1435.34), 0.21);
-    $stock=addItemToStock($product);
+    $stock = addItemToStock($product);
     $savedProduct = $stock->getProducts();
 
     expect($savedProduct[0])->toBe($product);
 });
 
-test('Stock object should be deleted', function () {
-    $product = new Product('iPhone', 1, new Money(1435.34), 0.21);
-    $stock=addItemToStock($product);
-    $stock->removeProduct($product);
+test('A specific product should be removed from stock', function () {
+    $stock = new Stock();
+    $products = [
+        new Product('iPhone', 1, new Money(1435.34), 0.21),
+        new Product('iPhone2', 1, new Money(1435.34), 0.21),
+        new Product('iPhone3', 1, new Money(1435.34), 0.21),
+    ];
 
-    expect($stock->getProducts())->toBe([]);
+    foreach ($products as $value) {
+        $stock->addProduct($value);
+    }
+
+    $stock->removeProduct($products[1]);
+
+    expect($stock->getProducts())->toBe([$products[0], $products[2]]);
 });
