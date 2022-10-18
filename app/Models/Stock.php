@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Models;
 
-class StockRepository implements StockInterface
+class Stock implements StockInterface
 {
     public function addProduct(ProductInterface $product): StockInterface
     {

@@ -1,9 +1,19 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Models;
 
-class MoneyRepository implements MoneyInterface
+class Money implements MoneyInterface
 {
+    private int $euros;
+    private int $cents;
+
+    public function __construct(float $price)
+    {
+        list($int,$dec)=explode('.', $price);
+        $this->euros = $int;
+        $this->cents = $dec;
+    }
+
     public function setCents(int $cents): MoneyInterface
     {
         // TODO: Implement setCents() method.
@@ -11,7 +21,7 @@ class MoneyRepository implements MoneyInterface
 
     public function getCents(): int
     {
-        // TODO: Implement getCents() method.
+        return $this->cents;
     }
 
     public function setEuros(int $euros): MoneyInterface
@@ -21,6 +31,6 @@ class MoneyRepository implements MoneyInterface
 
     public function getEuros(): int
     {
-        // TODO: Implement getEuros() method.
+        return $this->euros;
     }
 }

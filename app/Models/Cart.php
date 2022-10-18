@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Models;
 
-class CartRepository implements CartInterface
+class Cart implements CartInterface
 {
     public function addProduct(ProductInterface $product): CartInterface
     {

@@ -1,8 +1,21 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Models;
 
-class ProductRepository implements ProductInterface {
+class Product implements ProductInterface
+{
+    private string $name;
+    private int $available;
+    private MoneyInterface $price;
+    private float $vat;
+
+    public function __construct(string $name, int $available, MoneyInterface $price, float $vat)
+    {
+        $this->name = $name;
+        $this->available = $available;
+        $this->price = $price;
+        $this->vat = $vat;
+    }
 
     public function setName(string $name): ProductInterface
     {
@@ -11,7 +24,7 @@ class ProductRepository implements ProductInterface {
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return $this->name;
     }
 
     public function setAvailable(int $available): ProductInterface
@@ -21,7 +34,7 @@ class ProductRepository implements ProductInterface {
 
     public function getAvailable(): int
     {
-        // TODO: Implement getAvailable() method.
+        return $this->available;
     }
 
     public function setPrice(MoneyInterface $price): ProductInterface
@@ -31,7 +44,7 @@ class ProductRepository implements ProductInterface {
 
     public function getPrice(): MoneyInterface
     {
-        // TODO: Implement getPrice() method.
+        return $this->price;
     }
 
     public function setVatRate(float $vat): ProductInterface
@@ -41,6 +54,6 @@ class ProductRepository implements ProductInterface {
 
     public function getVatRate(): float
     {
-        // TODO: Implement getVatRate() method.
+        return $this->vat;
     }
 }
