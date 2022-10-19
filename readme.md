@@ -41,8 +41,10 @@ The program was built using PHP 8.0
    Test: ```composer```
    Or use the installer from ```https://getcomposer.org/```
 
-3. Go to the project directory and run ```composer update```
+3. Copy the code from Github: ```git clone https://github.com/RaymondNalezitij/Shopping_program.git```
 
-4. To test the models used by the project go to the project directory and run: ```./vendor/bin/pest```
+4. Go to the project directory and run ```composer update```
 
-5. To run the project in your terminal go to project directory and run: ```php index.php```
+5. To test the models used by the project go to the project directory and run: ```./vendor/bin/pest```
+
+6. To run the project in your terminal go to project directory and run: ```php index.php```
