@@ -14,12 +14,18 @@ class Product implements ProductInterface
         $this->name = $name;
         $this->available = $available;
         $this->price = $price;
-        $this->vat = $vat;
+        if ($vat >= 1){
+            $this->vat = $vat/100;
+        } else {
+            $this->vat = $vat;
+        }
     }
 
     public function setName(string $name): ProductInterface
     {
-        // TODO: Implement setName() method.
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getName(): string
@@ -29,7 +35,9 @@ class Product implements ProductInterface
 
     public function setAvailable(int $available): ProductInterface
     {
-        // TODO: Implement setAvailable() method.
+        $this->available = $available;
+
+        return $this;
     }
 
     public function getAvailable(): int
@@ -39,7 +47,9 @@ class Product implements ProductInterface
 
     public function setPrice(MoneyInterface $price): ProductInterface
     {
-        // TODO: Implement setPrice() method.
+        $this->price = $price;
+
+        return $this;
     }
 
     public function getPrice(): MoneyInterface
@@ -49,7 +59,9 @@ class Product implements ProductInterface
 
     public function setVatRate(float $vat): ProductInterface
     {
-        // TODO: Implement setVatRate() method.
+        $this->vat = $vat;
+
+        return $this;
     }
 
     public function getVatRate(): float

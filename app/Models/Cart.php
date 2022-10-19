@@ -14,6 +14,7 @@ class Cart implements CartInterface
     public function addProduct(ProductInterface $product): CartInterface
     {
         $this->cart[] = $product;
+
         return $this;
     }
 
@@ -40,8 +41,8 @@ class Cart implements CartInterface
         foreach ($this->cart as $value) {
             $cents = $value->getPrice()->getCents();
             $euros = $value->getPrice()->getEuros();
-            $sumCents = $sumCents + $cents;
-            $sumEuros = $sumEuros + $euros;
+            $sumCents = $sumCents + $cents * $value->getAvailable();
+            $sumEuros = $sumEuros + $euros * $value->getAvailable();
         }
 
         return new Money($sumEuros + $sumCents / 100);
